@@ -1,7 +1,11 @@
 import { marked } from "marked"
-import { onMount, createSignal, createEffect } from "solid-js"
+import { onMount, createSignal } from "solid-js"
 
-const Markdown = (props: any) => {
+interface filePath {
+  fileName: string;
+}
+
+const Markdown = (props: filePath) => {
   const [mdBody, setMdBody] = createSignal<string>("");
 
   onMount(async () => {
