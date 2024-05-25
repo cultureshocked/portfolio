@@ -1,8 +1,7 @@
-import { createSignal, createEffect, onMount, For } from "solid-js"
+import { createSignal, onMount, Show } from "solid-js"
 
 const GHData = () => {
   const [data, setData] = createSignal<any>(null);
-  const [repos, setRepos] = createSignal<any>(null);
 
   onMount(async () => {
     const raw = await fetch("https://api.github.com/users/cultureshocked");
@@ -11,27 +10,15 @@ const GHData = () => {
     setData(json);
   });
 
-  createEffect(async () => {
-    if (!data()) return;
-    const raw = await fetch(data().repos_url);
-    const json = await raw.json();
-    setRepos(json);
-  })
-
-  return <>
-    {(data() && repos()) ?
+  return (
+    <Show when={data()} fallback={<div>Loading GitHub stats...</div>}>
       <>
-        <h3>{data()!.name} (cultureshocked) has {data()!.public_repos} public repositories.</h3>
-        <p>
-          <i>{data()?.bio}</i>
-        </p>
+        <h3>{data().name} ({data().login}) has {data().public_repos} public repositories.</h3>
         <br></br>
-        <h3>Here are some of my repositories:</h3>
-        <For each={repos()}>
-          {(item) => <><b>{item.full_name}</b> -- <i>{item.description}</i><br></br></>}
-        </For>
-      </> : ""}
-  </>
+        <i>{data().bio}</i>
+      </>
+    </Show>
+  );
 }
 
 export default GHData
