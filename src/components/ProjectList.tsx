@@ -3,7 +3,7 @@ import Project from "./Project"
 
 
 const ProjectList = () => {
-  const [showcase, setShowcase] = createSignal<string[]>([])
+  const [showcase, setShowcase] = createSignal<string[]>([]);
 
   onMount(async () => {
     // Retrieve all public repositories
@@ -20,6 +20,7 @@ const ProjectList = () => {
     }
     setShowcase(showcaseNames);
   });
+
   return (
     <Show when={showcase().length} fallback={<div>Loading projects...</div>}>
       <>
@@ -27,7 +28,7 @@ const ProjectList = () => {
         <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
       </>
     </Show>
-  )
+  );
 }
 
 export default ProjectList;
