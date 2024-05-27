@@ -1,8 +1,11 @@
-import { createSignal, onMount, For, Show } from "solid-js"
+import { createSignal, onMount, For, Show, JSX } from "solid-js"
 import Project from "./Project"
 
+interface projectListProps {
+  children: JSX.Element;
+};
 
-const ProjectList = () => {
+const ProjectList = (props: projectListProps) => {
   const [showcase, setShowcase] = createSignal<string[]>([]);
 
   onMount(async () => {
@@ -25,7 +28,7 @@ const ProjectList = () => {
     <Show when={showcase().length} fallback={<div>Loading projects...</div>}>
       <>
         <div class="w-2/3 m-auto">
-          <h3>Here's some stuff I've built:</h3>
+          <h3 class="text-3xl font-bold text-center">{props.children}</h3>
           <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
         </div>
       </>
