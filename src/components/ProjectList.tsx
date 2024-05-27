@@ -1,5 +1,8 @@
 import { createSignal, onMount, For, Show, JSX } from "solid-js"
 import Project from "./Project"
+import { opendir } from "fs/promises"
+import { dirname } from "path"
+import { fileURLToPath } from 'url'
 
 interface projectListProps {
   children: JSX.Element;
@@ -7,20 +10,23 @@ interface projectListProps {
 
 const ProjectList = (props: projectListProps) => {
   const [showcase, setShowcase] = createSignal<string[]>([]);
+  
+  const readProjectsFromServer = async (): Promise<string[]> => {
+    "use server";
+    const publicParent = dirname(dirname(fileURLToPath(dirname(import.meta.url))));
+    const projectsPath = publicParent + `/public/projects`;
+    const dir = await opendir(projectsPath);
+    let descriptions: string[] = [];
+    for await (const dirent of dir)
+      if (dirent.name.endsWith(".md"))
+        descriptions.push(dirent.name);
+    return descriptions
+  }
 
   onMount(async () => {
-    // Retrieve all public repositories
-    const res = await fetch("https://api.github.com/users/cultureshocked/repos");
-    const repoArray = await res.json();
-    
-    // Query all projects with associated markdown documents
-    const showcaseNames: string[] = [];
-    for (let i = 0; i < repoArray.length; ++i) {
-      const repoDocumentLocation = `/projects/${repoArray[i].name}.md`;
-      const repoDocument = await fetch(repoDocumentLocation);
-      if (repoDocument.status == 200) 
-        showcaseNames.push(repoArray[i].name);
-    }
+    const showcaseDocs: string[] = await readProjectsFromServer();
+    const showcaseNames = showcaseDocs.map((str) => str.substring(0, str.length - 3));
+    console.log(showcaseNames);
     setShowcase(showcaseNames);
   });
 
