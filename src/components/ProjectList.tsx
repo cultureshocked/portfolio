@@ -16,7 +16,7 @@ const ProjectList = () => {
       const repoDocumentLocation = `/projects/${repoArray[i].name}.md`;
       const repoDocument = await fetch(repoDocumentLocation);
       if (repoDocument.status == 200) 
-        showcaseNames.push(repoDocumentLocation);
+        showcaseNames.push(repoArray[i].name);
     }
     setShowcase(showcaseNames);
   });
@@ -24,8 +24,10 @@ const ProjectList = () => {
   return (
     <Show when={showcase().length} fallback={<div>Loading projects...</div>}>
       <>
-        <h3>Here's some stuff I've built:</h3>
-        <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
+        <div class="w-2/3 m-auto">
+          <h3>Here's some stuff I've built:</h3>
+          <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
+        </div>
       </>
     </Show>
   );
