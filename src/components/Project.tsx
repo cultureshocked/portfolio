@@ -1,4 +1,6 @@
 import { Markdown, renderObject } from "./Markdown"
+import { onMount, createSignal, For } from "solid-js" 
+import { badgeObject, Badge } from "./Badge"
 
 interface ProjectProps {
   fileName: string;
@@ -6,6 +8,7 @@ interface ProjectProps {
 }
 
 const Project = (props: ProjectProps) => {
+  const [badges, setBadges] = createSignal<badgeObject[]>([])
   const descriptionRenderer: renderObject = {
     paragraph(text: string) {
       return `<p class="p-1">${text}</p>`
@@ -14,6 +17,16 @@ const Project = (props: ProjectProps) => {
       return `<h${level} class="text-xl text-black font-bold">${text}</h${level}>`
     }
   }
+
+  onMount(async () => {
+    try {
+      const res = await fetch(`/projects/${props.fileName}.badges.json`);
+      const json = await res.json();
+      setBadges(json);
+    } catch (err) {
+      console.log(err);
+    }
+  });
 
   const imgLocation: string = (props.projectImage) ? props.projectImage : `/projects/${props.fileName}.png`;
   const markdownLocation: string = `/projects/${props.fileName}.md`;
@@ -27,6 +40,9 @@ const Project = (props: ProjectProps) => {
       <div class="w-1/4 flex-grow">
         <img src={imgLocation} class="border-slate-300 object-fill" />
       </div>
+    </div>
+    <div class="flex">
+      <For each={badges()}>{ (badge) => <Badge badgeData={badge} />}</For>
     </div>
   </div>
   )
