@@ -1,4 +1,5 @@
 import { Markdown, renderObject } from "./Markdown"
+import { Badge, badgeObject } from "./Badge"
 
 const profileRenderer: renderObject = {
   heading(text: string, level: number) {
@@ -12,14 +13,7 @@ const profileRenderer: renderObject = {
   }
 }
 
-interface badgeItem {
-  text: string;
-  color: string;
-  logo: string;
-  URL: string;
-};
-
-const badges: badgeItem[] = [
+const badges: badgeObject[] = [
   {text: "cultureshocked", color: "111111", logo: "github", URL: "https://github.com/cultureshocked"},
   {text: "conradfitzg", color: "0A66C2", logo: "linkedin", URL: "https://linkedin.com/in/conradfitzg"},
 ];
@@ -38,9 +32,7 @@ const Profile = (props: any) => {
       Contact me via LinkedIn, GitHub, or E-Mail.
       <div class="flex">
         {badges.map((elem) => {
-          return <a href={elem.URL} class="m-1">
-            <img src={`https://img.shields.io/badge/${elem.text}-${elem.color}?style=for-the-badge&logo=${elem.logo}&logoColor=ffffff`} />
-          </a>
+          return <Badge badgeData={elem} />
         })}
       </div>
     </div>
