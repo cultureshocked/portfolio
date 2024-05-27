@@ -20,7 +20,7 @@ const badges: badgeObject[] = [
 
 const Profile = (props: any) => {
   return (
-    <div class="p-10 bg-slate-100 rounded-xl max-w-5xl m-auto my-10 shadow-xl">
+    <div class="p-10 bg-slate-100 rounded-xl max-w-5xl m-auto my-32 shadow-xl">
       <div class="flex space-between">
         <div class="flex-grow">
           <Markdown fileName="/ABOUT.md" renderOptions={profileRenderer}/>
