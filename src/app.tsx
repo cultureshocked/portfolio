@@ -1,11 +1,12 @@
-import { Router } from "@solidjs/router";
-import { FileRoutes } from "@solidjs/start/router";
+import { Router, Route } from "@solidjs/router";
 import { Suspense } from "solid-js";
-import Nav from "~/components/Nav";
+import Home from "./routes/home"
+import NotFound from "./routes/notfound"
+import Nav from "./components/Nav"
 import "./app.css";
 
 export default function App() {
-  return (
+    return (
     <Router
       root={props => (
         <>
@@ -14,7 +15,8 @@ export default function App() {
         </>
       )}
     >
-      <FileRoutes />
+      <Route path={["/"]} component={Home} />
+      <Route path={["*"]} component={NotFound} />
     </Router>
   );
 }
