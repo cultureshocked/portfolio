@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .not-visible {
+    transform: translateY(-5vh);
+    opacity: 0;
+  }
+
+  .is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
