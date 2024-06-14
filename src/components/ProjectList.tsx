@@ -27,7 +27,6 @@ const ProjectList = (props: projectListProps) => {
   onMount(async () => {
     const showcaseDocs: string[] = await readProjectsFromServer();
     const showcaseNames = showcaseDocs.map((str) => str.substring(0, str.length - 3));
-    console.log(showcaseNames);
     setShowcase(showcaseNames);
   });
 
@@ -35,7 +34,8 @@ const ProjectList = (props: projectListProps) => {
     <Show when={showcase().length} fallback={<div>Loading projects...</div>}>
       <>
         <div class="w-2/3 m-auto">
-          <h3 class="text-3xl font-bold text-center scroll-smooth" id={props.anchor} >{props.children}</h3>
+          <div class="h-16" id={props.anchor}></div>
+          <h3 class="text-3xl font-bold text-center scroll-smooth">{props.children}</h3>
           <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
         </div>
       </>

@@ -14,6 +14,7 @@ export default createHandler(() => (
         <body>
           <div id="app">{children}</div>
           {scripts}
+          <script src="./bg.js"></script>
         </body>
       </html>
     )}

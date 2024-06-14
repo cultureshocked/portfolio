@@ -1,6 +1,7 @@
 import { Markdown, renderObject } from "./Markdown"
 import { onMount, createSignal, For } from "solid-js" 
 import { badgeObject, Badge } from "./Badge"
+import FadeIn from "./FadeIn"
 
 interface ProjectProps {
   fileName: string;
@@ -32,6 +33,7 @@ const Project = (props: ProjectProps) => {
   const markdownLocation: string = `/projects/${props.fileName}.md`;
 
   return (
+    <FadeIn>
   <div class="rounded-2xl bg-slate-100 m-10 shadow-xl p-10">
     <div class="p-2 flex">
       <div class="p-2 w-3/4">
@@ -45,6 +47,7 @@ const Project = (props: ProjectProps) => {
       <For each={badges()}>{ (badge) => <Badge badgeData={badge} />}</For>
     </div>
   </div>
+  </FadeIn>
   )
 }
 

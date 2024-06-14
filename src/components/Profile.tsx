@@ -29,6 +29,7 @@ const Profile = (props: any) => {
           <img src={props.imgLocation} class="object-fill rounded-full" />
         </div>
       </div>
+      <br></br>
       Contact me via LinkedIn, GitHub, or E-Mail.
       <div class="flex">
         {badges.map((elem) => {

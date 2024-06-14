@@ -1,3 +1,24 @@
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); 
+@tailwind base; 
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .not-visible {
+    transform: translateX(-5vh);
+    opacity: 0;
+  }
+
+  .is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .inter-font {
+    font-family: 'Inter';
+    font-weight: 600;
+  }
+
+}
+
+
