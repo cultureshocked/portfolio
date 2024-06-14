@@ -6,7 +6,7 @@ const FadeIn = (props) => {
 
   createEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      setVisible(entry.isIntersecting);
+      setVisible(visible() || entry.isIntersecting);
     });
 
     observer.observe(elementRef);
