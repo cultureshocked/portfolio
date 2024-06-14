@@ -14,7 +14,9 @@ const ProjectList = (props: projectListProps) => {
   
   const readProjectsFromServer = async (): Promise<string[]> => {
     "use server";
+    console.log(import.meta.url);
     const publicParent = dirname(dirname(fileURLToPath(dirname(import.meta.url))));
+
     const projectsPath = publicParent + `/public/projects`;
     const dir = await opendir(projectsPath);
     let descriptions: string[] = [];
