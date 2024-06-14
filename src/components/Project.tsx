@@ -1,6 +1,6 @@
 import { Markdown, renderObject } from "./Markdown"
 import { onMount, createSignal, For } from "solid-js" 
-import { badgeObject, Badge } from "./Badge"
+import { BadgeObject, Badge } from "./Badge"
 import FadeIn from "./FadeIn"
 
 interface ProjectProps {
@@ -9,7 +9,7 @@ interface ProjectProps {
 }
 
 const Project = (props: ProjectProps) => {
-  const [badges, setBadges] = createSignal<badgeObject[]>([])
+  const [badges, setBadges] = createSignal<BadgeObject[]>([])
   const descriptionRenderer: renderObject = {
     paragraph(text: string) {
       return `<p class="p-1">${text}</p>`

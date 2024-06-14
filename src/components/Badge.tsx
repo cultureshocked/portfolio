@@ -1,6 +1,6 @@
 import { Show } from "solid-js"
 
-export interface badgeObject {
+export interface BadgeObject {
   text: string;
   logo: string;
   color: string;
@@ -8,11 +8,11 @@ export interface badgeObject {
   alt?: string;
 }
 
-interface badgeProps {
-  badgeData: badgeObject;
+interface BadgeProps {
+  badgeData: BadgeObject;
 }
 
-export const Badge = (props: badgeProps) => {
+export const Badge = (props: BadgeProps) => {
   const badgeImg = <img src={`https://img.shields.io/badge/${props.badgeData.text}-${props.badgeData.color}?style=for-the-badge&logo=${props.badgeData.logo}&logoColor=ffffff`} />
   return (
     <div class="p-1">

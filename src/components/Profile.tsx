@@ -1,5 +1,5 @@
 import { Markdown, renderObject } from "./Markdown"
-import { Badge, badgeObject } from "./Badge"
+import { Badge, BadgeObject } from "./Badge"
 
 const profileRenderer: renderObject = {
   heading(text: string, level: number) {
@@ -13,7 +13,7 @@ const profileRenderer: renderObject = {
   }
 }
 
-const badges: badgeObject[] = [
+const badges: BadgeObject[] = [
   {text: "cultureshocked", color: "111111", logo: "github", URL: "https://github.com/cultureshocked"},
   {text: "conradfitzg", color: "0A66C2", logo: "linkedin", URL: "https://linkedin.com/in/conradfitzg"},
 ];
