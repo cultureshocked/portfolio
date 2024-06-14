@@ -1,7 +1,7 @@
 import type { Icon } from "./components/TechIcon"
 import type { BadgeObject } from "./components/Badge"
 
-export const GITHUB_USERNAME: string = "";
+export const GITHUB_USERNAME: string = "cultureshocked";
 export const GITHUB_URL: string = `https://www.github.com/${GITHUB_USERNAME}/`;
 
 export const getGithubAvatarURL = async (): Promise<string> => {
@@ -10,7 +10,7 @@ export const getGithubAvatarURL = async (): Promise<string> => {
   return json.avatar_url;
 }
 
-export const LINKEDIN_USERNAME: string = "";
+export const LINKEDIN_USERNAME: string = "conradfitzg";
 export const LINKEDIN_URL: string = `https://linkedin.com/in/${LINKEDIN_USERNAME}/`;
 
 export const ProficientIcons: Icon[] = [
