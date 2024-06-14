@@ -1,7 +1,7 @@
 import { useLocation } from "@solidjs/router";
 import { createSignal, onMount, onCleanup } from "solid-js"
 
-export default function Nav() {
+const Nav = () => {
   const [isScrolled, setScrolled] = createSignal<Boolean>(false);
 
   const handleScroll = (event: any) => {
@@ -24,8 +24,6 @@ export default function Nav() {
   const hideStaticNav = () => {
     return isScrolled() ? "-translate-y-12" : "translate-y-0"; 
   }
-
-
 
   const location = useLocation();
   const active = (path: string) =>
@@ -61,3 +59,5 @@ export default function Nav() {
     </>
   );
 }
+
+export default Nav
