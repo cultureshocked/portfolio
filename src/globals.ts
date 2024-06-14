@@ -37,6 +37,15 @@ export const FamiliarIcons: Icon[] = [
   {name: "Git", iconLocation: "/svg/git.svg"},
 ];
 
+export const Projects: string[] = [
+  "bf.c",
+  "asm6502",
+  "ruby-chess",
+  "backup-system",
+  "allocators",
+  "heapq-ruby"
+]
+
 export const ContactBadges: BadgeObject[] = [
   {text: GITHUB_USERNAME, color: "111111", logo: "github", URL: GITHUB_URL},
   {text: LINKEDIN_USERNAME, color: "0A66C2", logo: "linkedin", URL: LINKEDIN_URL},

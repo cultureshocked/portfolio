@@ -3,14 +3,14 @@ import TechList from "../components/TechList"
 import { Icon } from "../components/TechIcon"
 import Profile from "../components/Profile"
 import Footer from "../components/Footer"
-import { ProficientIcons, FamiliarIcons } from "../globals"
+import { ProficientIcons, FamiliarIcons, Projects } from "../globals"
 
 const Home = () => {
 
   return <>
     <div class="h-4"></div>
     <Profile imgLocation="https://avatars.githubusercontent.com/u/59343709?v=4" />
-    <ProjectList anchor={"projects"} >Here's some stuff I've built:</ProjectList>
+    <ProjectList anchor={"projects"} projects={Projects} >Here's some stuff I've built:</ProjectList>
     <TechList anchor={"tech"} technologies={ProficientIcons}>
       I'm proficient with:
     </TechList>
