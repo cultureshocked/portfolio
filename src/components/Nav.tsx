@@ -8,13 +8,9 @@ const Nav = () => {
     setScrolled(window.scrollY > 0);
   }
 
-  let paddingWidth: number;
-
   onMount(() => {
     "use client";
     document.addEventListener('scroll', handleScroll);
-    paddingWidth = Math.floor(window.innerWidth / 2);
-    console.log(paddingWidth);
   });
 
   const revealScrolledNav = () => {
