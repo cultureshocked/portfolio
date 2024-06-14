@@ -35,7 +35,7 @@ const ProjectList = (props: projectListProps) => {
       <>
         <div class="w-2/3 m-auto">
           <div class="h-16" id={props.anchor}></div>
-          <h3 class="text-3xl font-bold text-center scroll-smooth">{props.children}</h3>
+          <h3 class="text-5xl font-bold text-center scroll-smooth inter-font heading-no-container">{props.children}</h3>
           <For each={showcase()}>{(elem) => <Project fileName={elem} />}</For>
         </div>
       </>

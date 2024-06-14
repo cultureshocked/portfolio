@@ -19,6 +19,12 @@
     font-weight: 600;
   }
 
+  .heading-no-container {
+    color: #fff;
+    text-shadow: 1px 1px 8px #020617;
+    padding: 1rem;
+  }
+
 }
 
 
