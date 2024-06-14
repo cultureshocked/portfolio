@@ -26,6 +26,11 @@ const ProjectList = (props: projectListProps) => {
     return descriptions
   }
 
+  const printPWD = () => {
+    'use server';
+    return import.meta.url;
+  }
+
   onMount(async () => {
     const showcaseDocs: string[] = await readProjectsFromServer();
     const showcaseNames = showcaseDocs.map((str) => str.substring(0, str.length - 3));
@@ -33,7 +38,7 @@ const ProjectList = (props: projectListProps) => {
   });
 
   return (
-    <Show when={showcase().length} fallback={<div>Loading projects...</div>}>
+    <Show when={showcase().length} fallback={<div>Loading projects at {printPWD()}...</div>}>
       <>
         <div class="w-2/3 m-auto">
           <div class="h-16" id={props.anchor}></div>
